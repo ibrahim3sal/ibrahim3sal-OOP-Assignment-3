@@ -18,3 +18,14 @@ error CS1061: 'T' does not contain a definition for 'Id' and no accessible exten
 **Why does the compiler reject it?**
 
 The compiler does not know that T has an Id property because T can represent any type.
+
+
+## Step 7
+
+Why must Store<string>() not compile?
+
+Store<T> has the constraint where T : IHasId. The string type does not implement IHasId, so it cannot be used with Store<T>.
+
+What is the common name for the kind of class built in Steps 4 and 5?
+
+Generic Repository.
