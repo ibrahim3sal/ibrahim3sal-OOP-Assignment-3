@@ -5,15 +5,18 @@ namespace RefactoringLab.Part03.BlockedUsers;
 public static class BlockedUserChecker
 {
     public static int CountBlocked(List<int> blockedIds, int[] requestIds)
+{
+    var blockedSet = new HashSet<int>(blockedIds);
+    var blocked = 0;
+
+    foreach (var id in requestIds)
     {
-        var blocked = 0;
-        foreach (var id in requestIds)
-        {
-            if (blockedIds.Contains(id))
-                blocked++;
-        }
-        return blocked;
+        if (blockedSet.Contains(id))
+            blocked++;
     }
+
+    return blocked;
+}
 
     public static List<int> BuildBlockedIds(int count)
     {

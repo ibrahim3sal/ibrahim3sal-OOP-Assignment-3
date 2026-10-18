@@ -1,3 +1,4 @@
+
 namespace RefactoringLab.Part03.Students;
 
 public class Student
@@ -8,11 +9,15 @@ public class Student
 
 public static class StudentCatalog
 {
-    public static List<Student> GetAllStudents()
+    public static IEnumerable<Student> GetAllStudents()
     {
-        var students = new List<Student>();
         for (var i = 1; i <= 1_000_000; i++)
-            students.Add(new Student { Id = i, Name = $"Student {i}" });
-        return students;
+        {
+            yield return new Student
+            {
+                Id = i,
+                Name = $"Student {i}"
+            };
+        }
     }
 }
